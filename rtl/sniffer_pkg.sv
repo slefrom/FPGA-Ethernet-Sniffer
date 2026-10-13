@@ -1,5 +1,4 @@
 `resetall
-`timescale 1ns / 1ps
 `default_nettype none
 
 package sniffer_pkg;
