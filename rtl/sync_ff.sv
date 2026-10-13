@@ -1,7 +1,6 @@
 // N-stage flip-flop synchroniser.
 
 `resetall
-`timescale 1ns / 1ps
 `default_nettype none
 
 module sync_ff #(
