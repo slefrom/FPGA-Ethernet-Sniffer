@@ -1,12 +1,3 @@
-"""Integration test, pins to pins: MII source in, UART sink out, records
-decoded with the host protocol module. A small MDIO PHY model watches
-bring-up.
-
-Checks: BMCR forced at bring-up; records for a protocol mix; bad-FCS frames
-never appear; COBS edge cases (zeros, long non-zero runs); and under a
-line-rate burst, every frame is either delivered whole or counted in a
-later record's drop field."""
-
 import logging
 import random
 
@@ -169,7 +160,6 @@ async def bad_fcs_dropped(dut):
 
 @cocotb.test()
 async def cobs_edge_payloads(dut):
-    """Records full of 0x00 and with non-zero runs longer than 254 bytes."""
     tb = TB(dut)
     await tb.start()
     hdr = bytes(Ether(src=MAC_A, dst=MAC_B, type=0x88B5))
@@ -210,7 +200,6 @@ async def burst_accounting(dut):
     assert len(delivered) + dropped == len(frames), \
         f"{len(delivered)} delivered + {dropped} dropped != {len(frames)} sent"
 
-    # each delivered record is complete, in order, and matches its own frame
     seq = [int.from_bytes(r.data[14:16], "big") for r in delivered]
     assert seq == sorted(seq), "records out of order"
     for r, s in zip(delivered, seq):
