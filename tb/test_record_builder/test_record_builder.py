@@ -1,8 +1,3 @@
-"""record_builder: timestamp latched at the first byte, frame truncated to
-SNAPLEN, trailer with orig_len and drop count, bad flag only on the record's
-last beat, drop count kept until the FIFO confirms a record was committed.
-Built for two SNAPLEN values."""
-
 import itertools
 import logging
 import os
@@ -89,7 +84,6 @@ LENGTHS = [1, 2, SNAPLEN - 1, SNAPLEN, SNAPLEN + 1, 59, 60, 64, 100, 1514, 1518]
 
 @cocotb.test()
 async def mii_paced(dut):
-    """One byte every two clocks with the MII inter-frame gap."""
     tb = TB(dut)
     await tb.reset()
     tb.source.set_pause_generator(itertools.cycle([0, 1]))
@@ -105,7 +99,6 @@ async def mii_paced(dut):
 
 @cocotb.test()
 async def byte_every_cycle(dut):
-    """Worst case input rate (one byte per clock) with the minimum gap."""
     tb = TB(dut)
     await tb.reset()
     frames = [frame(n) for n in LENGTHS + [random.randint(1, 300) for _ in range(30)]]
@@ -148,9 +141,6 @@ async def bad_flag_on_last_beat(dut):
 
 @cocotb.test()
 async def drop_count(dut):
-    """The FIFO is emulated: after each record the test either commits it
-    (good pulse) or drops it (overflow pulse). Each record must report the
-    drops since the last committed record."""
     tb = TB(dut)
     await tb.reset()
     tb.source.set_pause_generator(itertools.cycle([0, 1]))
