@@ -1,0 +1,35 @@
+set_property CFGBVS VCCO [current_design]
+set_property CONFIG_VOLTAGE 3.3 [current_design]
+set_property BITSTREAM.GENERAL.COMPRESS true [current_design]
+
+set_property -dict {PACKAGE_PIN E3  IOSTANDARD LVCMOS33} [get_ports CLK100MHZ]
+set_property -dict {PACKAGE_PIN C2  IOSTANDARD LVCMOS33} [get_ports ck_rst]
+
+set_property -dict {PACKAGE_PIN G18 IOSTANDARD LVCMOS33 SLEW SLOW DRIVE 12} [get_ports eth_ref_clk]
+set_property -dict {PACKAGE_PIN C16 IOSTANDARD LVCMOS33 SLEW SLOW DRIVE 12} [get_ports eth_rstn]
+set_property -dict {PACKAGE_PIN F15 IOSTANDARD LVCMOS33} [get_ports eth_rx_clk]
+set_property -dict {PACKAGE_PIN D18 IOSTANDARD LVCMOS33} [get_ports {eth_rxd[0]}]
+set_property -dict {PACKAGE_PIN E17 IOSTANDARD LVCMOS33} [get_ports {eth_rxd[1]}]
+set_property -dict {PACKAGE_PIN E18 IOSTANDARD LVCMOS33} [get_ports {eth_rxd[2]}]
+set_property -dict {PACKAGE_PIN G17 IOSTANDARD LVCMOS33} [get_ports {eth_rxd[3]}]
+set_property -dict {PACKAGE_PIN G16 IOSTANDARD LVCMOS33} [get_ports eth_rx_dv]
+set_property -dict {PACKAGE_PIN C17 IOSTANDARD LVCMOS33} [get_ports eth_rxerr]
+set_property -dict {PACKAGE_PIN H16 IOSTANDARD LVCMOS33} [get_ports eth_tx_clk]
+set_property -dict {PACKAGE_PIN H14 IOSTANDARD LVCMOS33 SLEW FAST DRIVE 12} [get_ports {eth_txd[0]}]
+set_property -dict {PACKAGE_PIN J14 IOSTANDARD LVCMOS33 SLEW FAST DRIVE 12} [get_ports {eth_txd[1]}]
+set_property -dict {PACKAGE_PIN J13 IOSTANDARD LVCMOS33 SLEW FAST DRIVE 12} [get_ports {eth_txd[2]}]
+set_property -dict {PACKAGE_PIN H17 IOSTANDARD LVCMOS33 SLEW FAST DRIVE 12} [get_ports {eth_txd[3]}]
+set_property -dict {PACKAGE_PIN H15 IOSTANDARD LVCMOS33 SLEW FAST DRIVE 12} [get_ports eth_tx_en]
+set_property -dict {PACKAGE_PIN D17 IOSTANDARD LVCMOS33} [get_ports eth_col]
+set_property -dict {PACKAGE_PIN G14 IOSTANDARD LVCMOS33} [get_ports eth_crs]
+set_property -dict {PACKAGE_PIN F16 IOSTANDARD LVCMOS33} [get_ports eth_mdc]
+set_property -dict {PACKAGE_PIN K13 IOSTANDARD LVCMOS33 PULLUP true} [get_ports eth_mdio]
+
+set_property -dict {PACKAGE_PIN D10 IOSTANDARD LVCMOS33} [get_ports uart_rxd_out]
+
+set_property -dict {PACKAGE_PIN H5  IOSTANDARD LVCMOS33} [get_ports {led[0]}]
+set_property -dict {PACKAGE_PIN J5  IOSTANDARD LVCMOS33} [get_ports {led[1]}]
+set_property -dict {PACKAGE_PIN T9  IOSTANDARD LVCMOS33} [get_ports {led[2]}]
+set_property -dict {PACKAGE_PIN T10 IOSTANDARD LVCMOS33} [get_ports {led[3]}]
+
+
