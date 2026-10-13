@@ -1,13 +1,3 @@
-"""Shared helpers for the cocotb testbenches.
-
-Each test directory holds a thin SystemVerilog wrapper (Taxi style: the
-taxi_axis_if interfaces live inside the wrapper so cocotb can reach their
-signals) and a Python file with the cocotb tests plus a pytest entry point
-that builds and runs the simulation with cocotb's Python runner.
-
-Run everything from the repo root with:   pytest -n auto tb
-Waveforms (FST) are written when WAVES=1 is set in the environment.
-"""
 
 from __future__ import annotations
 
@@ -18,10 +8,6 @@ ROOT = Path(__file__).resolve().parents[1]
 RTL_DIR = ROOT / "rtl"
 TAXI_SRC = ROOT / "lib" / "taxi" / "src"
 
-# Verilator: Taxi uses initial values on registers and leaves optional pins
-# unconnected, so those style warnings are off. Unknown initial state is
-# randomised (--x-initial unique + the rand-reset plusarg) to shake out
-# registers that rely on initial values instead of reset.
 VERILATOR_ARGS = [
     "-Wno-fatal",
     "-Wno-PINMISSING",
