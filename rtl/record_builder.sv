@@ -1,5 +1,4 @@
 `resetall
-`timescale 1ns / 1ps
 `default_nettype none
 
 module record_builder
@@ -39,7 +38,6 @@ end
 
 assign ts_count = ts_cnt_reg;
 
-// Queues
 
 // delay line: {last_kept, data}
 logic [8:0]      buf_mem [BUF_DEPTH];
